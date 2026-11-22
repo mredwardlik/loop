@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>loop · demo</title>
+  <link rel="icon" href="favicon.png">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main>
+    <header>
+      <h1>🔁 loop</h1>
+      <p>A pretend face tracker. The <code>detect</code> step reads the camera on every iteration;
+        the other steps react once to each new position.</p>
+    </header>
+
+    <section class="camera">
+      <div class="frame" id="frame">
+        <div class="face" id="face">🙂</div>
+        <div class="guide"></div>
+      </div>
+      <div class="instruction" id="instruction">Press Start</div>
+      <div class="positions" id="positions">
+        <span>Camera:</span>
+        <button data-position="auto" class="on">auto</button>
+        <button data-position="left">left</button>
+        <button data-position="forward">forward</button>
+        <button data-position="right">right</button>
+        <button data-position="far">far</button>
+        <button data-position="lost">no face</button>
+      </div>
+    </section>
+
+    <section class="panel">
+      <div class="controls">
+        <button id="start" class="primary">▶ Start</button>
+        <button id="stop" disabled>■ Stop</button>
+        <label>pause between iterations
+          <input id="delay" type="range" min="0" max="1500" step="100" value="300">
+          <output id="delayValue">300 ms</output>
+        </label>
+      </div>
+      <div class="status">
+        <div>iterations <b id="iterations">0</b></div>
+        <div>now <b id="current">—</b></div>
+      </div>
+      <table>
+        <thead><tr><th>step</th><th>condition</th><th>delay</th><th>runs</th><th>on</th></tr></thead>
+        <tbody id="steps"></tbody>
+      </table>
+      <ol class="log" id="log"></ol>
+    </section>
+  </main>
+  <script type="module" src="demo.js"></script>
+</body>
+</html>
